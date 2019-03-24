@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/USER/Desktop/hash/hash.cpp
+string
+-
+iostream
+-
+hash.h
+/cygdrive/c/Users/USER/Desktop/hash/hash.h
+
+/cygdrive/c/Users/USER/Desktop/hash/hash.h
+string
+-
+

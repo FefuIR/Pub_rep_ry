@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/hash.dir/main.cpp.o CMakeFiles/hash.dir/hash.cpp.o  -o hash.exe -Wl,--out-implib,libhash.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
