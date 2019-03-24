@@ -18,8 +18,8 @@ void HashEntry::SetRecords(Rec R) {
     if (this->size <= n) {
         R.fio = "Ivanov";
         for (int i = 0; i < this->size; i++) {
-            cin >> R.number; cin >> R.fio;
-            //R.number = static_cast<unsigned int>(i); R.fio[0]++;
+            //cin >> R.number; cin >> R.fio;
+            R.number = static_cast<unsigned int>(i); R.fio[0]++;
             if  (Review(R)) {
                 i--;
                 cerr << REPEAT << endl;
@@ -74,8 +74,10 @@ int HashEntry::Search(Rec R) {
     int i = HashFunction1(R.number);
     if ((table[i].number == R.number) && (table[i].fio == R.fio)) return i;
     else {
-        i = HashFunction2(i);
-        if ((table[i].number == R.number) && (table[i].fio == R.fio)) return i;
+        while (i < n) {
+            i = HashFunction2(i);
+            if ((table[i].number == R.number) && (table[i].fio == R.fio)) return i;
+        }
     }
     return fail;
 }
@@ -128,7 +130,7 @@ void HashEntry::PrintTheTable() {
             cout << i << " " << table[i].number << " " << table[i].fio << endl;
         }
     }
-    cout << endl;
+    cout << endl << endl;
 }
 
 HashEntry::~HashEntry() {

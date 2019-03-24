@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    HashEntry Hash(10);
+    HashEntry Hash(12);
     Rec R = Rec();
     Hash.SetRecords(R);
     Hash.PrintTheTable();
