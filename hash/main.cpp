@@ -14,7 +14,7 @@ int main() {
     R.fio = "Qvanov";
 
     Hash.Search(R);
-    Hash.PrintSearch(R);
+    Hash.PrintSearch(R); cout << endl;
     Hash.Delete(R);
     Hash.PrintTheTable();
     return 0;

@@ -1,3 +1,5 @@
+#include <utility>
+
 #include <string>
 #include <iostream>
 #include "hash.h"
@@ -21,8 +23,9 @@ void HashEntry::SetRecords(Rec R) {
             //cin >> R.number; cin >> R.fio;
             R.number = static_cast<unsigned int>(i); R.fio[0]++;
             if  (Review(R)) {
-                i--;
                 cerr << REPEAT << endl;
+                cin >> R.number; cin >> R.fio;
+                i--;
             }
             else Add(R);
         }
@@ -37,7 +40,7 @@ int HashEntry::HashFunction1(int number) {
 bool HashEntry::Review(Rec R) {
     bool error = false;
     for (auto &i : table) {
-        if (R.number == i.number) {
+        if ((R.number == i.number) && (R.fio == i.fio)) { //must be for search
             return !error;
         }
     }
@@ -91,7 +94,7 @@ void HashEntry::PrintSearch(Rec R) {
 }
 
 void HashEntry::Delete(Rec R) {
-    int pos = Search(R);
+    int pos = Search(std::move(R));
     if (pos != fail) {
         table[pos].status = 0;
         pos++;
@@ -130,7 +133,7 @@ void HashEntry::PrintTheTable() {
             cout << i << " " << table[i].number << " " << table[i].fio << endl;
         }
     }
-    cout << endl << endl;
+    cout << endl;
 }
 
 HashEntry::~HashEntry() {
