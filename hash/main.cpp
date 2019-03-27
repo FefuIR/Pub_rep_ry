@@ -5,17 +5,40 @@
 using namespace std;
 
 int main() {
-    HashEntry Hash(12);
-    Rec R = Rec();
-    Hash.SetRecords(R);
+    Rec R;
+    HashEntry Hash(20);
+
+    R.fio = "Avanov";
+
+    for (int i = 1; i < 21; i++) {
+        R.number = i;
+        R.fio[0]++;
+        //cin >> R.number; cin >> R.fio;
+        Hash.Add(R);
+    }
+
     Hash.PrintTheTable();
 
-    R.number = 7;
-    R.fio = "Qvanov";
+    cout<< endl << "-----------------------" << endl;
+    R.fio = "Avanov";
 
-    Hash.Search(R);
-    Hash.PrintSearch(R); cout << endl;
-    Hash.Delete(R);
+    for (int i = 1; i < 16; i++) {
+        R.number = 2*i;
+        R.fio[0]+= 2;
+        Hash.Delete(R);
+    }
+
+    Hash.PrintTheTable();
+
+    cout<< endl << "-----------------------" << endl;
+    R.fio = "Avanof";
+
+    for (int i = 1; i < 11; i++) {
+        R.number = 2*i;
+        R.fio[0]+= 2;
+        Hash.Add(R);
+    }
+
     Hash.PrintTheTable();
     return 0;
 }
