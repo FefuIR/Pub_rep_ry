@@ -6,35 +6,36 @@ using namespace std;
 
 int main() {
     Rec R;
-    HashEntry Hash(20);
+    HashEntry Hash(10);
 
     R.fio = "Avanov";
 
-    for (int i = 1; i < 21; i++) {
-        R.number = i;
+    for (int i = 1; i < 10; i++) {
+        R.number = i*5;
         R.fio[0]++;
-        //cin >> R.number; cin >> R.fio;
         Hash.Add(R);
     }
 
     Hash.PrintTheTable();
+    cout<<R.number<<" "<< R.fio<<endl;
 
     cout<< endl << "-----------------------" << endl;
-    R.fio = "Avanov";
+    //R.fio = "Avanov";
 
-    for (int i = 1; i < 16; i++) {
-        R.number = 2*i;
-        R.fio[0]+= 2;
+    for (int i = 8; i > 0 ; i-=3) {
+        R.number =  R.number-15;
+        R.fio[0]-=3;
+        cout<<R.number<<" "<< R.fio<<endl;
         Hash.Delete(R);
     }
+    cout<<"---------------"<<endl;
 
     Hash.PrintTheTable();
 
-    cout<< endl << "-----------------------" << endl;
-    R.fio = "Avanof";
+    R.fio = "bvanof";
 
-    for (int i = 1; i < 11; i++) {
-        R.number = 2*i;
+    for (int i = 1; i < 15; i++) {
+        R.number = i*5;
         R.fio[0]+= 2;
         Hash.Add(R);
     }

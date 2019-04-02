@@ -60,10 +60,11 @@ void HashEntry::Add(Rec R) {
                 else key2++;
             }
             if (!insert) {
-                cerr << END << endl;
+               // cerr << END << endl;
             }
         }
     }
+
 }
 
 int HashEntry::Search(Rec R) {
@@ -103,21 +104,22 @@ void HashEntry::Delete(Rec R) {
                     } else {
                         key = HashFunction2(key);
                         bool found = false;
-                        while (!found) {
-                            if (table[key].status == 0) {
+                        while (key < size) {
+                            if ((!found) && (table[key].status == 0)) {
                                 table[key].number = table[i].number;
                                 table[key].fio = table[i].fio;
                                 table[key].status = 1;
                                 table[i].status = 0;
                                 found = true;
-                            } else key++;
+                            }
+                            key++;
                         }
                     }
                 }
             }
         }
     }
-    else cerr << DELETE << endl;
+    //else cerr << DELETE << endl;
 }
 
 void HashEntry::PrintTheTable() {
