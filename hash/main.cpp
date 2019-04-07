@@ -41,5 +41,16 @@ int main() {
     }
 
     Hash.PrintTheTable();
+
+
+    R.fio = "Avanov";
+
+    for (int i = 1; i < 15; i++) {
+        R.number = i*5;
+        R.fio[0]+= 1;
+        Hash.Delete(R);
+    }
+
+    Hash.PrintTheTable();
     return 0;
 }
