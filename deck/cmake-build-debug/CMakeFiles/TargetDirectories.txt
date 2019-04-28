@@ -1,0 +1,3 @@
+/cygdrive/c/Users/USER/Desktop/deck/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/USER/Desktop/deck/cmake-build-debug/CMakeFiles/deck.dir
+/cygdrive/c/Users/USER/Desktop/deck/cmake-build-debug/CMakeFiles/edit_cache.dir

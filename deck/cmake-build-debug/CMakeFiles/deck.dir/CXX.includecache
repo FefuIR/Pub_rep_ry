@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/USER/Desktop/deck/deck.cpp
+deck.h
+/cygdrive/c/Users/USER/Desktop/deck/deck.h
+iostream
+-
+
+/cygdrive/c/Users/USER/Desktop/deck/deck.h
+
+/cygdrive/c/Users/USER/Desktop/deck/main.cpp
+iostream
+-
+deck.h
+/cygdrive/c/Users/USER/Desktop/deck/deck.h
+
