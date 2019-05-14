@@ -5,49 +5,62 @@ using namespace std;
 
 int main() {
 
-    Deck D(5);
-    D.PushRight(6);
-    D.PushRight(8);
-    D.PushRight(5);
-    D.PushRight(7);
-    D.PushRight(4);
-    D.Print();
-    cout << "---------------------------" << endl;
+    Deck D(15);
+    Deck D1(6);
 
-    for (int i = 0; i < 5; i ++) {D.PopLeft(); }
+    for (int i = 0; i < 7; i++) {
+        D.PushRight(i*2);
+        D.PushLeft(i*4);
+    }
     D.Print();
-    cout << endl << "---------------------------" << endl;
+    cout << "L = " << D.Length() << endl;
+    cout << "-------" << endl;
 
-    D.PushRight(5);
-    D.PushRight(6);
-    D.PushRight(5);
-    D.PushRight(2);
-    D.PushRight(1);
-    D.Print();
-
-    cout << "---------------------------" << endl;
-    for (int i = 0; i < 5; i ++) {
-        cout << "kol: " << D.Length() << endl ;
+    for (int i = 0; i < 15; i++) {
+        D.PopRight();
         D.PopLeft();
     }
-    cout << "kol: " << D.Length() << endl ;
     D.Print();
-    cout << endl << "---------------------------" << endl;
+    cout << "L = " << D.Length() << endl;
+    cout << "-------" << endl;
 
-    D.PushLeft(5);
-    D.PushLeft(5);
+    for (int i = 0; i < 10; i++) {
+      //  D.PushRight(i*10);
+        D.PushLeft(i*4);
+    }
+    D.Print();
+    cout << "L = " << D.Length() << endl;
+    cout << "-------" << endl;
 
-    Deck D2(4);
-    D2.PushRight(2);
-    D2.PushRight(1);
-    D2.PushRight(3);
-    Deck D3(D);
-    D3 = D2;
-    D2.Print();
-    cout << "-----------" << endl;
-    D3.Print();
+    //D1.Print();
+    //cout << "L = " << D1.Length() << endl;
+
+    /*for (int i(0); i < 5; i++) {
+        D.PopRight();
+        D1.PopLeft();
+    }
+    D.Print();
+    cout << "L = " << D.Length() << endl;
+    D1.Print();
+    cout << "L = " << D1.Length() << endl;
 
 
+    for (int i(0); i < 7; i++) {
+        D.PushLeft(2*i);
+        D1.PushRight(i*20);
+    }
+
+    D.Print();
+    cout << "L = " << D.Length() << endl;
+    D1.Print();
+    cout << "L = " << D1.Length() << endl;
+
+
+    D=D1=D;
+    D.Print();
+    cout << "L = " << D.Length() << endl;
+    D1.Print();
+    cout << "L = " << D1.Length() << endl;*/
 
     return 0;
 }

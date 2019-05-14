@@ -92,36 +92,45 @@ void Deck::PushRight(int x) {
         cout <<  "Deck is full!" << endl;
     }
     else {
-        int left_;
-        if (left < right) {left_ = left + 1; }
-        else {left_ = 0;}
-        while (deck[left_] >= x && left_ != right) { left_++; }
-        if (left_ == right && right + 1 < max_l && x <= deck[left_]) {
-            deck[left_ + 1] = x;
-            right++;
-            if (left >= right) {left++; }
-        }
-        else if (right + 1 == max_l && x < deck[right]) {
-            for (int i = left + 1; i <= left_; i++) {
-                deck[i - 1] = deck[i];
-            }
-            left--;
-            deck[left_] = x;
-        }
-        else if (left_ != 0) {
-            for (int j = 1; j < left_; j++) {
-                deck[j - 1] = deck[j];
-            }
-            deck[left_ - 1] = x;
+        if (x > deck[left + 1] && left < right) {
+            deck[left] = x;
             left--;
         }
         else {
-            for (int j = right; j >= left_; j--) {
-                deck[j + 1] = deck[j];
+            int left_;
+            if (left < right) {left_ = left + 1; }
+            else {left_ = 0;}
+            while (deck[left_] >= x && left_ != right) {
+                left_++;
             }
-            deck[left_] = x;
-            right++;
-            left = right + 1;
+            if (left_ == right && right + 1 < max_l && x <= deck[left_]) {
+                deck[left_ + 1] = x;
+                right++;
+                if (left >= right) {left++; }
+            }
+            else if (right + 1 == max_l && x < deck[right]) {
+                for (int i = left + 1; i <= left_; i++) {
+                    deck[i - 1] = deck[i];
+                }
+                left--;
+                deck[left_] = x;
+            }
+            else if (right + 1 == max_l) {
+                for (int i = left + 1; i < left_; i++) {
+                    deck[i - 1] = deck[i];
+                }
+                left--;
+                deck[left_ - 1] = x;
+            }
+            else {
+                for (int j = right; j >= left_; j--) {
+                    deck[j + 1] = deck[j];
+                }
+                if (left >= right) {left++; }
+                right++;
+                deck[left_] = x;
+                if (left_ == 0) {left = right + 1;}
+            }
         }
     }
     if (left < 0) {left = right + 1; }
@@ -129,7 +138,7 @@ void Deck::PushRight(int x) {
 
 void Deck::PopLeft() {
     if (left == right) {
-        cout << "Nothing to delete;" << endl;
+        cout << "Nothing to delete" << endl;
     }
     if (left < right) { left++; }
     else { left = 0; }
@@ -154,8 +163,9 @@ void Deck::Print() {
         if (left < right) {left_ = left + 1; }
         else {left_ = 0;}
         for (int i = left_; i <= right; i++) {
-            cout << deck[i] << " - " << i << endl;
+            cout << deck[i] << " ";
         }
+        cout << endl;
     }
 }
 
@@ -188,15 +198,27 @@ Deck& Deck::operator= (Deck &d) {
     int i = 0;
     if (this == &d) {return *this; }
     else {
-        if (max_l > d.max_l) {
-            current = d.left;
+        current = d.left;
+        if (current > d.right) {current = 0; }
+        if (this->max_l >= d.max_l) {
             while (current <= d.right){
+                deck[i] = d.deck[current];
+                PopRight();
+                i++;
+                current++;
+            }
+            left = current;
+            right = current - 1;
+            return *this;
+        }
+        else {
+            while (current <= d.right && current < this->max_l) {
                 deck[i] = d.deck[current];
                 i++;
                 current++;
             }
-            left = 0;
-            right = i - 1;
+            left = current;
+            right = current - 1;
             return *this;
         }
     }
